@@ -48,15 +48,15 @@ export function ComparativeMatrixSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-500/40 text-xs font-mono text-amber-400 mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-mono text-emerald-400 mb-4">
               <ShieldAlert className="w-3.5 h-3.5" />
-              <span>TABLE 1: CAPABILITY GAP ANALYSIS</span>
+              <span>MARKET & COMPETITIVE BENCHMARKING</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              BHOOMI vs Existing Border Surveillance
+              BHOOMI™ vs Conventional Border Surveillance
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
-              Why optical cameras and radar systems leave critical vulnerabilities during subterranean tunnel excavation and low-visibility infiltration attempts along the LoC and LAC.
+              Why optical cameras and active radars leave critical operational vulnerabilities during subterranean tunnel excavation and low-visibility covert infiltration attempts.
             </p>
           </div>
         </ScrollReveal>
@@ -73,7 +73,7 @@ export function ComparativeMatrixSection() {
                     <th className="py-4 px-4 font-semibold text-slate-400">Ground Radar</th>
                     <th className="py-4 px-4 font-semibold text-slate-400">Borehole Seismometer</th>
                     <th className="py-4 px-6 font-bold text-emerald-400 bg-emerald-950/30 border-l border-r border-emerald-500/30">
-                      BHOOMI (Proposed)
+                      BHOOMI™ (NaX Nova)
                     </th>
                   </tr>
                 </thead>
@@ -135,10 +135,10 @@ export function ComparativeMatrixSection() {
               </table>
             </div>
 
-            {/* Table Footer Note from Proposal */}
+            {/* Table Footer Note */}
             <div className="p-4 bg-slate-950 border-t border-slate-800 text-[11px] font-mono text-slate-400 flex items-center justify-between">
-              <span>* BHOOMI positions itself directly in the capability gap left open by existing border surveillance infrastructure.</span>
-              <span className="text-emerald-400 hidden sm:inline">iDEX OPEN CHALLENGE v2.0</span>
+              <span>* NaX Nova&apos;s BHOOMI™ directly solves the persistent capability gap left open by existing border surveillance infrastructure.</span>
+              <span className="text-emerald-400 hidden sm:inline">NAX NOVA DEFENCE INNOVATIONS</span>
             </div>
           </div>
         </ScrollReveal>

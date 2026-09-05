@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { submitGrantInquiry, ActionState } from "@/app/actions/inquiry";
 import confetti from "canvas-confetti";
-import { Shield, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Shield, Send, CheckCircle2, AlertCircle, Loader2, Radio } from "lucide-react";
 
 export function GrantInquiryForm() {
   const [loading, setLoading] = useState(false);
@@ -36,10 +36,10 @@ export function GrantInquiryForm() {
       <div className="flex items-center justify-between pb-6 border-b border-slate-800">
         <div>
           <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider block mb-1">
-            DEFENCE INNOVATION & EVALUATION ACCESS
+            NAX NOVA ENTERPRISE & DEFENCE CLIENT PORTAL
           </span>
           <h3 className="text-2xl font-bold text-white tracking-tight">
-            Schedule Evaluator Briefing
+            Book Live Product Demonstration
           </h3>
         </div>
         <span className="text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
@@ -77,7 +77,7 @@ export function GrantInquiryForm() {
               type="text"
               name="fullName"
               required
-              placeholder="Col. Vikram S. / Dr. Amit Sen"
+              placeholder="Col. Vikram S. / Rajesh Mehta"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors"
             />
             {state?.errors?.fullName && (
@@ -95,7 +95,7 @@ export function GrantInquiryForm() {
               type="text"
               name="organization"
               required
-              placeholder="iDEX / DIO / Indian Army / DRDO"
+              placeholder="Indian Army / BSF / DRDO / Enterprise Security"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors"
             />
             {state?.errors?.organization && (
@@ -115,7 +115,7 @@ export function GrantInquiryForm() {
               type="email"
               name="email"
               required
-              placeholder="officer@nic.in or evaluator@agency.org"
+              placeholder="officer@nic.in or security@enterprise.com"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors"
             />
             {state?.errors?.email && (
@@ -132,7 +132,7 @@ export function GrantInquiryForm() {
             <input
               type="text"
               name="designation"
-              placeholder="Technical Evaluator / Program Manager"
+              placeholder="Chief Security Officer / Technical Director"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors"
             />
           </div>
@@ -146,20 +146,20 @@ export function GrantInquiryForm() {
             <select
               name="inquiryType"
               required
-              defaultValue="grant_evaluation"
+              defaultValue="technical_briefing"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 text-xs text-white outline-none transition-colors"
             >
-              <option value="grant_evaluation">iDEX Grant Evaluation / DIO Review</option>
-              <option value="technical_briefing">Technical Architecture Briefing</option>
-              <option value="field_trial_partnership">Designated Trial Site Partnership</option>
-              <option value="procurement">Defence Procurement & Evaluation</option>
-              <option value="other">Other Institutional Collaboration</option>
+              <option value="technical_briefing">Live Field Demonstration / PoC</option>
+              <option value="grant_evaluation">Technical Architecture Briefing</option>
+              <option value="procurement">Defence / Security Procurement</option>
+              <option value="field_trial_partnership">Perimeter Trial Site Partnership</option>
+              <option value="other">Strategic Enterprise Collaboration</option>
             </select>
           </div>
 
           <div>
             <label className="block text-xs font-mono text-slate-300 mb-1.5">
-              Phone / Secure Contact (Optional)
+              Phone / Contact (Optional)
             </label>
             <input
               type="tel"
@@ -172,13 +172,13 @@ export function GrantInquiryForm() {
 
         <div>
           <label className="block text-xs font-mono text-slate-300 mb-1.5">
-            Brief Details / Demonstration Requirements *
+            Demonstration Requirements / Operational Parameters *
           </label>
           <textarea
             name="message"
             rows={4}
             required
-            placeholder="Please specify your trial location requirements, scheduling timeline, or technical queries regarding BHOOMI v2.0..."
+            placeholder="Please specify your sector topography, installation requirements, or preferred schedule for a BHOOMI™ technical demonstration..."
             className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-emerald-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors resize-none"
           />
           {state?.errors?.message && (
@@ -191,17 +191,17 @@ export function GrantInquiryForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-slate-950 font-bold text-xs tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.25)]"
+          className="w-full py-3.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 disabled:opacity-50 text-slate-950 font-bold text-xs tracking-wider transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
         >
           {loading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>TRANSMITTING ENCRYPTED DOSSIER...</span>
+              <span>DISPATCHING REQUEST TO NAX NOVA ENGINEERS...</span>
             </>
           ) : (
             <>
               <Send className="w-4 h-4" />
-              <span>SUBMIT EVALUATOR BRIEFING REQUEST</span>
+              <span>SCHEDULE PRODUCT DEMONSTRATION</span>
             </>
           )}
         </button>

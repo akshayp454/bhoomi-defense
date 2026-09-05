@@ -6,8 +6,8 @@ import { ComparativeMatrixSection } from "@/components/home/ComparativeMatrixSec
 import { ImpactSummarySection } from "@/components/home/ImpactSummarySection";
 
 export const metadata = {
-  title: "BHOOMI | Passive Seismic–Acoustic Fusion Network for Border Defence",
-  description: "iDEX Open Challenge technology proposal for BHOOMI: low-cost, 100% passive seismic-acoustic mesh network with edge-AI sensor fusion for sub-surface tunnel and stealth border infiltration detection along India's LoC and LAC.",
+  title: "NaX Nova | BHOOMI™ Autonomous Defence Sensor Mesh",
+  description: "Flagship product platform of NaX Nova LLP: 100% passive seismic-acoustic mesh network with edge-AI sensor fusion for sub-surface tunnel and stealth border infiltration interdiction.",
 };
 
 export default function HomePage() {

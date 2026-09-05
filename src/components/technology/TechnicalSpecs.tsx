@@ -33,7 +33,7 @@ export function TechnicalSpecs() {
           </h3>
         </div>
         <span className="text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">
-          DOC REF: BHOOMI-TECH-SPEC-V2
+          DOC REF: NAX-NOVA-BHOOMI-V2
         </span>
       </div>
 

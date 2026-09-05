@@ -19,7 +19,7 @@ export function ThreatSimulationSection() {
               Real-Time Cross-Verification in Action
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
-              Each sensing modality alone is prone to false positives — optical cameras blinded by fog, radar blind to underground excavation, and geophones triggered by wandering wildlife. <strong className="text-slate-200">BHOOMI cross-verifies seismic micro-vibrations against acoustic harmonics on-node</strong> before triggering alarms.
+              Each sensing modality alone is prone to false positives — optical cameras blinded by fog, radar blind to underground excavation, and geophones triggered by wandering wildlife. <strong className="text-slate-200">NaX Nova&apos;s BHOOMI™ cross-verifies seismic micro-vibrations against acoustic harmonics on-node</strong> before triggering alarms.
             </p>
           </div>
         </ScrollReveal>

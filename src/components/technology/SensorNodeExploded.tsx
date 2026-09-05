@@ -98,7 +98,7 @@ export function SensorNodeExploded() {
             EXPLODED HARDWARE ARCHITECTURE
           </span>
           <h3 className="text-2xl font-bold text-white tracking-tight">
-            The BHOOMI Autonomous Sensor Node
+            The BHOOMI™ Autonomous Sensor Node
           </h3>
         </div>
         <div className="text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700">

@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Radio, Menu, X, FileText, ChevronRight, Award } from "lucide-react";
+import { Shield, Radio, Menu, X, FileText, ChevronRight, Sparkles } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -20,11 +21,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Overview", href: "/" },
+    { name: "Product", href: "/" },
     { name: "Technology", href: "/technology" },
-    { name: "Roadmap & Budget", href: "/roadmap" },
-    { name: "Applications", href: "/applications" },
-    { name: "Grant Portal", href: "/contact" },
+    { name: "Solutions", href: "/applications" },
+    { name: "R&D Roadmap", href: "/roadmap" },
+    { name: "Contact & Demo", href: "/contact" },
   ];
 
   return (
@@ -32,32 +33,36 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#06080e]/90 backdrop-blur-md border-b border-slate-800/80 shadow-2xl py-3"
+            ? "bg-[#06080e]/95 backdrop-blur-md border-b border-slate-800/80 shadow-2xl py-3"
             : "bg-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Brand Logo */}
+            {/* Brand Logo: NaX Nova LLP with Product Indicator */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 group-hover:border-emerald-400 transition-colors">
-                <Radio className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
-                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                </span>
+              <div className="relative h-10 w-32 sm:w-36 rounded-lg overflow-hidden border border-slate-800 bg-black flex items-center justify-center p-1 group-hover:border-slate-600 transition-colors">
+                <Image
+                  src="/naxnova-logo.jpg"
+                  alt="NaX Nova LLP Logo"
+                  width={144}
+                  height={40}
+                  className="object-contain w-full h-full"
+                  priority
+                />
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl font-black tracking-widest text-white font-mono">
-                    BHOOMI
+
+              <div className="hidden sm:flex flex-col border-l border-slate-800 pl-3">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-mono font-bold tracking-wider text-emerald-400">
+                    BHOOMI™
                   </span>
-                  <span className="hidden sm:inline-flex items-center gap-1 text-[9px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-500/30">
-                    <Award className="w-3 h-3" /> iDEX PROPOSAL
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
+                    FLAGSHIP PRODUCT
                   </span>
                 </div>
-                <span className="text-[10px] tracking-wider text-slate-400 uppercase font-mono">
-                  Seismic–Acoustic Fusion Network
+                <span className="text-[9px] tracking-wider text-slate-500 uppercase font-mono">
+                  Autonomous Defence Mesh
                 </span>
               </div>
             </Link>
@@ -89,15 +94,15 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Right Action Button */}
+            {/* Right Action Button: Request Product Demo */}
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/contact"
-                className="relative inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold tracking-wider text-emerald-300 rounded-xl bg-emerald-950/40 border border-emerald-500/40 hover:bg-emerald-900/40 hover:border-emerald-400 transition-all shadow-[0_0_15px_rgba(16,185,129,0.15)] group"
+                className="relative inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold tracking-wider text-slate-950 rounded-xl bg-emerald-400 hover:bg-emerald-300 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] group"
               >
-                <FileText className="w-3.5 h-3.5 text-emerald-400" />
-                <span>EVALUATOR BRIEFING</span>
-                <ChevronRight className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
+                <Radio className="w-3.5 h-3.5" />
+                <span>BOOK LIVE DEMO</span>
+                <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
 
@@ -126,9 +131,12 @@ export function Navbar() {
             className="fixed inset-x-0 top-[70px] z-40 bg-[#06080e]/95 backdrop-blur-xl border-b border-slate-800 p-6 md:hidden shadow-2xl"
           >
             <div className="flex flex-col gap-3">
-              <div className="pb-2 border-b border-slate-800">
+              <div className="pb-2 border-b border-slate-800 flex items-center justify-between">
                 <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">
-                  DEFENCE DEEPTECH NAVIGATION
+                  NAX NOVA LLP • DEFENCE DEEPTECH
+                </span>
+                <span className="text-[10px] font-mono text-slate-500">
+                  PRODUCT: BHOOMI™
                 </span>
               </div>
               {navLinks.map((link) => (
@@ -153,8 +161,8 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm tracking-wider"
                 >
-                  <FileText className="w-4 h-4" />
-                  <span>REQUEST GRANT BRIEFING</span>
+                  <Radio className="w-4 h-4" />
+                  <span>REQUEST PRODUCT DEMONSTRATION</span>
                 </Link>
               </div>
             </div>

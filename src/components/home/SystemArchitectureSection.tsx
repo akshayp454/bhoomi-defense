@@ -70,13 +70,13 @@ export function SystemArchitectureSection() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-xs font-mono text-cyan-400 mb-4">
               <Network className="w-3.5 h-3.5" />
-              <span>FIGURE 1: DISTRIBUTED MULTI-TIER MESH TOPOLOGY</span>
+              <span>DISTRIBUTED MULTI-TIER MESH TOPOLOGY</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              BHOOMI System Architecture
+              BHOOMI™ System Architecture
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
-              From subterranean micro-vibrations to the central command dashboard — an end-to-end resilient architecture engineered for remote high-altitude and heavily forested battlegrounds.
+              From subterranean micro-vibrations to the central command dashboard — an end-to-end resilient architecture engineered by <strong className="text-slate-200">NaX Nova LLP</strong> for high-altitude and remote border battlegrounds.
             </p>
           </div>
         </ScrollReveal>

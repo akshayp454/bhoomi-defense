@@ -32,33 +32,33 @@ export function WhitepaperCard() {
         </div>
         <div>
           <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold block">
-            DOCUMENT VERSION: v2.0
+            TECHNICAL DOSSIER & SPECIFICATIONS
           </span>
           <h3 className="text-xl font-bold text-white tracking-tight">
-            Download Detailed Proposal Dossier
+            Download BHOOMI™ Datasheet
           </h3>
           <span className="text-xs text-slate-400 block mt-0.5">
-            Full 13-Section Technical & Financial Submission Document
+            Full 13-Section Engineering & Tactical Deployment Dossier
           </span>
         </div>
       </div>
 
       <div className="space-y-2 text-xs font-mono text-slate-300 bg-slate-950/80 p-4 rounded-xl border border-slate-800">
         <div className="flex justify-between py-1 border-b border-slate-800/80">
-          <span className="text-slate-500">Submission Category:</span>
-          <span className="text-white">Open Challenge — Individual Innovator</span>
+          <span className="text-slate-500">Product System:</span>
+          <span className="text-white">BHOOMI™ Sensor Mesh v2.0</span>
+        </div>
+        <div className="flex justify-between py-1 border-b border-slate-800/80">
+          <span className="text-slate-500">Manufacturer:</span>
+          <span className="text-emerald-400 font-bold">NaX Nova LLP</span>
         </div>
         <div className="flex justify-between py-1 border-b border-slate-800/80">
           <span className="text-slate-500">Domain:</span>
-          <span className="text-white">Autonomous Systems / AI / Sensors</span>
-        </div>
-        <div className="flex justify-between py-1 border-b border-slate-800/80">
-          <span className="text-slate-500">Submission Deadline:</span>
-          <span className="text-amber-400">30 September 2026, 11:59 PM</span>
+          <span className="text-white">Autonomous Sensing & AI Fusion</span>
         </div>
         <div className="flex justify-between py-1">
-          <span className="text-slate-500">Classification:</span>
-          <span className="text-emerald-400">iDEX EVALUATOR RESTRICTED</span>
+          <span className="text-slate-500">Security Clearance:</span>
+          <span className="text-cyan-400">DEFENCE & ENTERPRISE VERIFIED</span>
         </div>
       </div>
 
@@ -75,7 +75,7 @@ export function WhitepaperCard() {
             type="text"
             name="organization"
             required
-            placeholder="Your Agency / Organization"
+            placeholder="Enterprise / Agency Name"
             className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors"
           />
         </div>
@@ -85,7 +85,7 @@ export function WhitepaperCard() {
             type="email"
             name="email"
             required
-            placeholder="Official Evaluator Email"
+            placeholder="Official Email Address"
             className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 text-xs text-white placeholder:text-slate-600 outline-none transition-colors"
           />
         </div>
@@ -98,12 +98,12 @@ export function WhitepaperCard() {
           {loading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>AUTHENTICATING...</span>
+              <span>AUTHENTICATING ACCESS...</span>
             </>
           ) : (
             <>
               <Download className="w-4 h-4" />
-              <span>REQUEST DOSSIER ACCESS (PDF)</span>
+              <span>REQUEST TECHNICAL DATASHEET (PDF)</span>
             </>
           )}
         </button>

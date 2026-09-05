@@ -60,20 +60,20 @@ export function BudgetBreakdown() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
         <div>
           <span className="text-xs font-mono text-amber-400 uppercase tracking-wider block mb-1">
-            SECTION 10: FINANCIAL PLAN & MILESTONES
+            PRODUCT R&D & PRODUCTION FINANCIAL MILESTONES
           </span>
           <h3 className="text-2xl font-bold text-white tracking-tight">
-            Milestone-Linked ₹1.30 Crore Budget Allocation
+            R&D Capital Allocation & Deployment Milestones
           </h3>
           <p className="text-xs text-slate-400 mt-1">
-            Structured strictly within the ₹1.50 Crore iDEX Open Challenge grant ceiling
+            Structured for accelerated prototype-to-field scaling and volume defence manufacturing
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-right">
             <span className="text-[10px] font-mono text-slate-500 uppercase block">
-              TOTAL GRANT SOUGHT
+              TOTAL R&D INVESTMENT
             </span>
             <span className="text-xl font-black font-mono text-amber-400">
               ₹1.30 Crore

@@ -5,21 +5,22 @@ import { Footer } from "@/components/layout/Footer";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 
 export const metadata: Metadata = {
-  title: "BHOOMI — Passive Seismic–Acoustic Fusion Network | iDEX Defence Proposal",
+  title: "NaX Nova LLP | BHOOMI™ Autonomous Defence Sensor Mesh",
   description:
-    "Border Hazard Observation & Onset Monitoring Infrastructure. An indigenous deeptech sensor network for border infiltration & sub-surface tunnel detection along LoC and LAC.",
+    "NaX Nova LLP presents BHOOMI™: An autonomous passive seismic-acoustic sensor fusion mesh for sub-surface tunnel detection and zero-visibility border infiltration interdiction.",
   keywords: [
+    "NaX Nova",
+    "NaX Nova LLP",
     "BHOOMI",
-    "iDEX Open Challenge",
-    "Defence Innovation Organisation",
-    "Seismic sensor",
+    "Defence Tech",
+    "Seismic sensor mesh",
     "Sub-surface tunnel detection",
-    "Border security",
+    "Border surveillance",
+    "Edge AI sensor fusion",
     "Atmanirbhar Bharat",
-    "Edge AI",
-    "Sensor Fusion",
+    "Make in India",
   ],
-  authors: [{ name: "BHOOMI Innovator Team" }],
+  authors: [{ name: "NaX Nova LLP" }],
 };
 
 export default function RootLayout({
