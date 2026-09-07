@@ -1,36 +1,92 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ThreatClassifierSim } from "@/components/animations/ThreatClassifierSim";
-import { ShieldCheck, Cpu, Layers, Radio, Plane } from "lucide-react";
+import { BorderMissionStorySimulator } from "@/components/animations/BorderMissionStorySimulator";
+import { ShieldCheck, Cpu, Layers, Radio, Plane, PlayCircle, Activity } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ThreatSimulationSection() {
+  const [simulatorMode, setSimulatorMode] = useState<"story" | "classifier">("story");
+
   return (
     <section id="simulation" className="py-24 bg-[#070b13] relative overflow-hidden border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         <ScrollReveal>
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-mono text-emerald-400 mb-4">
               <Cpu className="w-3.5 h-3.5" />
-              <span>ON-EDGE NEURAL FUSION & DRONE ACTIVATION</span>
+              <span>INTERACTIVE BORDER GROUND WALKTHROUGH &amp; SIMULATION</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Real-Time Cross-Verification & Cued Aerial Intercept
+              Real-Time Border Mission: How BHOOMI Works on Ground
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
-              Optical cameras are blinded by fog; ground radar cannot see underground; and isolated geophones false-alarm on wildlife. <strong className="text-slate-200">NaX Nova&apos;s BHOOMI™ cross-verifies seismic micro-vibrations against acoustic harmonics locally</strong> — and once verified, <strong className="text-emerald-400">autonomously dispatches a self-controlled VTOL drone in &lt;15 seconds</strong> to the exact location for live thermal target acquisition.
+              Experience the end-to-end operational sequence from subterranean pickaxe impact through edge AI inference, TDOA triangulation, dock lid actuation, and autonomous VTOL drone thermal lock.
             </p>
+
+            {/* Interactive Mode Toggle Bar */}
+            <div className="mt-8 inline-flex items-center p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+              <button
+                onClick={() => setSimulatorMode("story")}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
+                  simulatorMode === "story"
+                    ? "bg-emerald-500 text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.35)]"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <PlayCircle className="w-4 h-4" />
+                <span>REAL-TIME BORDER MISSION STORY</span>
+                <span className="ml-1 px-1.5 py-0.5 rounded bg-black/30 text-[9px] uppercase font-mono">
+                  CINEMATIC
+                </span>
+              </button>
+
+              <button
+                onClick={() => setSimulatorMode("classifier")}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
+                  simulatorMode === "classifier"
+                    ? "bg-cyan-500 text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.35)]"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Activity className="w-4 h-4" />
+                <span>WAVEFORM &amp; EDGE-AI ENGINE</span>
+              </button>
+            </div>
           </div>
         </ScrollReveal>
 
-        {/* Interactive Simulator */}
+        {/* Display Active Simulator View */}
         <ScrollReveal delay={0.2}>
-          <ThreatClassifierSim />
+          <AnimatePresence mode="wait">
+            {simulatorMode === "story" ? (
+              <motion.div
+                key="story-mode"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+              >
+                <BorderMissionStorySimulator />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="classifier-mode"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ThreatClassifierSim />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </ScrollReveal>
 
         {/* 4 Technical Value Pillars */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-4">
           <ScrollReveal delay={0.1}>
             <div className="p-5 rounded-2xl bg-[#0b101d] border border-slate-800/80 hover:border-emerald-500/30 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-emerald-950/50 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">

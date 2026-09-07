@@ -54,6 +54,49 @@ export interface ScenarioDetail {
   droneResponse?: DroneResponseAction;
 }
 
+export interface MissionStoryStep {
+  stepNumber: number;
+  timestamp: string;
+  phaseTitle: string;
+  actor:
+    | "GROUND SENSOR (N-14)"
+    | "EDGE MCU (STM32H7)"
+    | "SECTOR GATEWAY (TDOA)"
+    | "DRONE DOCK 02"
+    | "VTOL DRONE (UAV-04)"
+    | "FLIR BOSON 640"
+    | "FORWARD COMMAND (QRF)";
+  description: string;
+  tacticalLog: string;
+  droneTelemetry?: {
+    altitudeMeters: number;
+    airspeedKmh: number;
+    gimbalPitchDeg: number;
+    batteryPct: number;
+    status: string;
+  };
+  visualGraphic:
+    | "seismic_wave"
+    | "edge_inference"
+    | "tdoa_triangulation"
+    | "dock_unseal"
+    | "rapid_ascent"
+    | "thermal_lock"
+    | "qrf_interdiction";
+}
+
+export interface BorderMission {
+  id: string;
+  title: string;
+  sector: string;
+  time: string;
+  terrain: string;
+  weather: string;
+  threatType: string;
+  summary: string;
+  steps: MissionStoryStep[];
+}
+
 export interface BudgetHead {
   head: string;
   phase1: number; // in Lakhs
