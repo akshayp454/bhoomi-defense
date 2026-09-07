@@ -1,6 +1,7 @@
 import React from "react";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ThreatSimulationSection } from "@/components/home/ThreatSimulationSection";
+import { Drone3DExplodedSection } from "@/components/home/Drone3DExplodedSection";
 import { SystemArchitectureSection } from "@/components/home/SystemArchitectureSection";
 import { ComparativeMatrixSection } from "@/components/home/ComparativeMatrixSection";
 import { ImpactSummarySection } from "@/components/home/ImpactSummarySection";
@@ -15,6 +16,7 @@ export default function HomePage() {
     <div className="space-y-0">
       <HeroSection />
       <ThreatSimulationSection />
+      <Drone3DExplodedSection />
       <SystemArchitectureSection />
       <ComparativeMatrixSection />
       <ImpactSummarySection />

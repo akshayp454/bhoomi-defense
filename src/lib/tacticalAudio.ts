@@ -170,6 +170,72 @@ class TacticalSoundManager {
       // Graceful fallback
     }
   }
+
+  public playOrbitTick(): void {
+    if (this.isMuted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(1400, now);
+      gain.gain.setValueAtTime(0.015, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(now + 0.03);
+    } catch {
+      // Graceful fallback
+    }
+  }
+
+  public playExplodeServo(): void {
+    if (this.isMuted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(160, now);
+      osc.frequency.linearRampToValueAtTime(280, now + 0.12);
+      gain.gain.setValueAtTime(0.03, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(now + 0.14);
+    } catch {
+      // Graceful fallback
+    }
+  }
+
+  public playTdoaSolve(): void {
+    if (this.isMuted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(920, now);
+      osc.frequency.setValueAtTime(1380, now + 0.05);
+      osc.frequency.setValueAtTime(1840, now + 0.10);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(now + 0.18);
+    } catch {
+      // Graceful fallback
+    }
+  }
 }
 
 export const tacticalAudio = new TacticalSoundManager();

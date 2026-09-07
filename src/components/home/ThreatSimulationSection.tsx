@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ThreatClassifierSim } from "@/components/animations/ThreatClassifierSim";
 import { BorderMissionStorySimulator } from "@/components/animations/BorderMissionStorySimulator";
-import { ShieldCheck, Cpu, Layers, Radio, Plane, PlayCircle, Activity } from "lucide-react";
+import { ClickToInfiltrateSandbox } from "@/components/animations/ClickToInfiltrateSandbox";
+import { OpticalVsThermalSlider } from "@/components/animations/OpticalVsThermalSlider";
+import { ShieldCheck, Cpu, Layers, Radio, Plane, PlayCircle, Activity, MapPin, Flame } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function ThreatSimulationSection() {
-  const [simulatorMode, setSimulatorMode] = useState<"story" | "classifier">("story");
+  const [simulatorMode, setSimulatorMode] = useState<"story" | "sandbox" | "thermal" | "classifier">("sandbox");
 
   return (
     <section id="simulation" className="py-24 bg-[#070b13] relative overflow-hidden border-t border-slate-800">
@@ -26,33 +28,63 @@ export function ThreatSimulationSection() {
               Experience the end-to-end operational sequence from subterranean pickaxe impact through edge AI inference, TDOA triangulation, dock lid actuation, and autonomous VTOL drone thermal lock.
             </p>
 
-            {/* Interactive Mode Toggle Bar */}
-            <div className="mt-8 inline-flex items-center p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+            {/* Interactive Mode Toggle Bar (4 Tactical Modes) */}
+            <div className="mt-8 inline-flex flex-wrap justify-center items-center p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl gap-1">
               <button
-                onClick={() => setSimulatorMode("story")}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
-                  simulatorMode === "story"
+                onClick={() => setSimulatorMode("sandbox")}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
+                  simulatorMode === "sandbox"
                     ? "bg-emerald-500 text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.35)]"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
-                <PlayCircle className="w-4 h-4" />
-                <span>REAL-TIME BORDER MISSION STORY</span>
+                <MapPin className="w-4 h-4" />
+                <span>5KM MAP SANDBOX</span>
                 <span className="ml-1 px-1.5 py-0.5 rounded bg-black/30 text-[9px] uppercase font-mono">
-                  CINEMATIC
+                  CLICK-TO-INFILTRATE
+                </span>
+              </button>
+
+              <button
+                onClick={() => setSimulatorMode("thermal")}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
+                  simulatorMode === "thermal"
+                    ? "bg-amber-500 text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.35)]"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Flame className="w-4 h-4" />
+                <span>FOG VS. FLIR THERMAL</span>
+                <span className="ml-1 px-1.5 py-0.5 rounded bg-black/30 text-[9px] uppercase font-mono">
+                  SLIDER
+                </span>
+              </button>
+
+              <button
+                onClick={() => setSimulatorMode("story")}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
+                  simulatorMode === "story"
+                    ? "bg-cyan-500 text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.35)]"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <PlayCircle className="w-4 h-4" />
+                <span>MISSION STORY</span>
+                <span className="ml-1 px-1.5 py-0.5 rounded bg-black/30 text-[9px] uppercase font-mono">
+                  TIMELINE
                 </span>
               </button>
 
               <button
                 onClick={() => setSimulatorMode("classifier")}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-bold tracking-wider transition-all ${
                   simulatorMode === "classifier"
-                    ? "bg-cyan-500 text-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.35)]"
+                    ? "bg-purple-500 text-slate-950 shadow-[0_0_20px_rgba(168,85,247,0.35)]"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
                 <Activity className="w-4 h-4" />
-                <span>WAVEFORM &amp; EDGE-AI ENGINE</span>
+                <span>EDGE-AI ENGINE</span>
               </button>
             </div>
           </div>
@@ -61,7 +93,31 @@ export function ThreatSimulationSection() {
         {/* Display Active Simulator View */}
         <ScrollReveal delay={0.2}>
           <AnimatePresence mode="wait">
-            {simulatorMode === "story" ? (
+            {simulatorMode === "sandbox" && (
+              <motion.div
+                key="sandbox-mode"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ClickToInfiltrateSandbox />
+              </motion.div>
+            )}
+
+            {simulatorMode === "thermal" && (
+              <motion.div
+                key="thermal-mode"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+              >
+                <OpticalVsThermalSlider />
+              </motion.div>
+            )}
+
+            {simulatorMode === "story" && (
               <motion.div
                 key="story-mode"
                 initial={{ opacity: 0, y: 15 }}
@@ -71,7 +127,9 @@ export function ThreatSimulationSection() {
               >
                 <BorderMissionStorySimulator />
               </motion.div>
-            ) : (
+            )}
+
+            {simulatorMode === "classifier" && (
               <motion.div
                 key="classifier-mode"
                 initial={{ opacity: 0, y: 15 }}

@@ -1,10 +1,11 @@
 import React from "react";
 import { SensorNodeExploded } from "@/components/technology/SensorNodeExploded";
 import { DroneDockExploded } from "@/components/technology/DroneDockExploded";
+import { InteractiveDrone3DViewer } from "@/components/technology/InteractiveDrone3DViewer";
 import { FusionPipeline } from "@/components/technology/FusionPipeline";
 import { TechnicalSpecs } from "@/components/technology/TechnicalSpecs";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Cpu, ShieldCheck, Zap, Radio, Layers, Plane } from "lucide-react";
+import { Cpu, ShieldCheck, Zap, Radio, Layers, Plane, Sparkles } from "lucide-react";
 
 export const metadata = {
   title: "Technology & Architecture | BHOOMI Defence Deeptech",
@@ -31,15 +32,26 @@ export default function TechnologyPage() {
           </div>
         </ScrollReveal>
 
-        {/* Section 1: Exploded Node Hardware */}
+        {/* Section 1: 3D Interactive Subsystem & Exploded Drone CAD Explorer */}
         <ScrollReveal delay={0.1}>
+          <div id="interactive-3d-drone" className="space-y-4">
+            <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <Sparkles className="w-4 h-4 text-emerald-400" />
+              <span>TIER 3 AERIAL &amp; DOCK // 3D EXPLODED SUBSYSTEM CAD VIEWER</span>
+            </div>
+            <InteractiveDrone3DViewer />
+          </div>
+        </ScrollReveal>
+
+        {/* Section 2: Exploded Node Hardware */}
+        <ScrollReveal delay={0.15}>
           <div id="sensor-node">
             <SensorNodeExploded />
           </div>
         </ScrollReveal>
 
-        {/* Section 2: Exploded Drone Docking Station & VTOL UAV */}
-        <ScrollReveal delay={0.15}>
+        {/* Section 3: Exploded Drone Docking Station & VTOL UAV Subsystems */}
+        <ScrollReveal delay={0.2}>
           <div id="drone-dock">
             <DroneDockExploded />
           </div>
