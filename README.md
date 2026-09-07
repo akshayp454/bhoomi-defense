@@ -1,21 +1,22 @@
-# BHOOMI — Deeptech Defence Intelligence Platform
-### Passive Seismic–Acoustic Fusion Network for Border Infiltration & Sub-Surface Tunnel Detection
-**Prepared for iDEX Open Challenge (Ministry of Defence / Defence Innovation Organisation - DIO)**
+# BHOOMI — Tri-Domain Defence Intelligence Platform
+### Passive Seismic–Acoustic Mesh Network & Autonomous Drone Interceptors
+**Prepared by NaX Nova LLP for iDEX Open Challenge (Ministry of Defence / Defence Innovation Organisation - DIO)**
 
 ---
 
 ## 🛡️ Project Overview
 
-**BHOOMI** (*Border Hazard Observation & Onset Monitoring Infrastructure*) is a full-stack, responsive, multipage deeptech defence platform engineered to secure Government Grants (iDEX Open Challenge ₹1.5 Cr ceiling) and showcase innovative subterranean and surface border surveillance along India's Line of Control (LoC) and Line of Actual Control (LAC).
+**BHOOMI** (*Border Hazard Observation & Onset Monitoring Infrastructure*) is an integrated tri-domain surveillance platform engineered to secure Government Grants (iDEX Open Challenge ₹1.5 Cr ceiling) and showcase innovative subterranean, surface, and aerial border defense along India's Line of Control (LoC) and Line of Actual Control (LAC).
 
 ### Key Features
-- **Tactical Command HUD**: Obsidian carbon aesthetic with cybernetic emerald, stealth cyan, and amber alert accents.
-- **Interactive Dual-Modality Waveform Engine**: Real-time HTML5 Canvas visualizer simulating 250 Hz geophone P/S waves and MEMS acoustic harmonics.
-- **On-Edge Neural Sensor Fusion Simulator**: Interactive testbed allowing grant evaluators to test 4 real-world threat scenarios (*Sub-Surface Tunnel Digging*, *Covert Footstep Infiltration*, *Heavy Armored Vehicle*, and *Wildlife / Environmental Noise*) to observe how dual-channel cross-verification eliminates false alarms (<5% false alarm ratio).
-- **Interactive System Architecture**: Step-by-step breakdown of buried sensor nodes, encrypted LoRa mesh relay, sector gateways, and command post dashboard.
-- **Table 1 Capability Gap Analysis**: Interactive comparative matrix benchmarking BHOOMI vs Optical Cameras, Ground Radar, and Borehole Seismometers.
-- **18-Month TRL Progression & Gantt**: Interactive progression from TRL 1/2 to TRL 6/7.
-- **Table 2 Milestone-Linked Budget Break-up**: Detailed ₹1.30 Crore budget across sensor hardware (₹57 L), AI software (₹18 L), enclosure ruggedisation (₹15 L), field trials (₹25 L), and testing/certification (₹15 L).
+- **Tactical Command HUD & Autonomous Drone Interceptor HUD**: Interactive, 3D-styled VTOL drone visualizer with rotating carbon-fiber blades, FLIR Boson 640 thermal gimbal, live telemetry (altitude, airspeed, TDOA lock), and one-click test auto-launch.
+- **Product Design Document (PDD v1.0) Integration**: Complete 18-section military-grade design document stored in [`docs/PRODUCT_DESIGN_DOCUMENT.md`](./docs/PRODUCT_DESIGN_DOCUMENT.md) and viewable interactively on the platform at `/product-doc`.
+- **Cued Aerial Reaction Network**: Automated dispatch of self-controlled VTOL drones from weatherproof docking stations in <15 seconds upon high-confidence seismic alarm (>0.75 probability), streaming live FLIR Boson 640 thermal video to forward posts.
+- **Interactive Dual-Modality Waveform Engine**: Real-time HTML5 Canvas visualizer simulating 500 Hz geophone P/S waves and MEMS acoustic harmonics.
+- **On-Edge Neural Sensor Fusion Simulator**: Interactive testbed allowing grant evaluators to test 4 real-world threat scenarios (*Sub-Surface Tunnel Digging*, *Covert Footstep Infiltration*, *Heavy Armored Vehicle*, and *Wildlife / Environmental Noise*) with automatic drone launch triggers.
+- **4-Tier Tri-Domain Architecture**: Step-by-step breakdown of buried sensor nodes (Tier 1), Edge Gateway & TDOA mesh (Tier 2), Autonomous Drone Docks & VTOL UAVs (Tier 3), and Tactical C2 Dashboard (Tier 4).
+- **Capability Gap Analysis**: Comparative matrix benchmarking BHOOMI vs Optical Cameras, Ground Radar, Borehole Seismometers, and Conventional Continuous UAV Patrols.
+- **5KM Sector Kit Commercial BOM (PDD v1.0)**: Hardware unit economics (~₹49.70 Lakhs per 5km sector kit / ~₹9.94 L/km) alongside the ₹1.30 Crore R&D milestone allocation.
 - **Full-Stack Supabase Integration**: Pre-configured database schema (`supabase/schema.sql`) with Row-Level Security (RLS) and Next.js Server Actions for evaluator briefing requests and proposal dossier downloads.
 
 ---

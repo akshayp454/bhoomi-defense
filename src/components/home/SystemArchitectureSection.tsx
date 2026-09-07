@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { motion } from "framer-motion";
-import { Radio, Shield, Network, Server, Monitor, Sun, Zap, ArrowRight } from "lucide-react";
+import { Radio, Shield, Network, Server, Monitor, Sun, Zap, ArrowRight, Plane } from "lucide-react";
 
 export function SystemArchitectureSection() {
   const [selectedComponent, setSelectedComponent] = useState<number>(0);
@@ -12,53 +12,53 @@ export function SystemArchitectureSection() {
     {
       id: 0,
       title: "Buried Sensor Nodes",
-      badge: "EDGE SENSING LAYER",
+      badge: "TIER 1: SENSING LAYER",
       description:
-        "Ruggedised IP67 nodes buried or staked at shallow depth along border perimeters. Houses a high-sensitivity geophone, MEMS microphone, low-power edge MCU, solar harvesting cell, and encrypted mesh transceiver.",
+        "100 ruggedised IP67 nodes per 5km sector deployed in a 50m zig-zag pattern. Houses a 4.5 Hz vertical geophone, Knowles MEMS acoustic array, ARM Cortex-M7 edge MCU running INT8 1D-CNN inference, 10Ah LiFePO4 battery, and encrypted LoRa transceiver.",
       specs: [
-        "Sensors: Geophone (0.5–100 Hz) + MEMS acoustic mic",
-        "Compute: Cortex-M33 ultra-low-power Edge AI MCU",
-        "Power: Solar cell + LiFePO4 multi-day battery buffer",
-        "Enclosure: IP67 hermetically sealed ground spike",
+        "Sensors: SM-6 4.5 Hz Geophone + MEMS Knowles acoustic array",
+        "Compute: STM32H7 Cortex-M7 @ 480MHz (18ms INT8 inference)",
+        "Power: 10Ah LiFePO4 + 5W monocrystalline solar (>7 days no-sun autonomy)",
+        "Enclosure: Polyurethane-potted IP67 casing + 100mm ground stake",
       ],
     },
     {
       id: 1,
-      title: "Encrypted Mesh Relay Layer",
-      badge: "ZERO-BACKHAUL RELAY",
+      title: "Edge Gateway & TDOA Mesh",
+      badge: "TIER 2: EDGE PROCESSING",
       description:
-        "Hop-to-hop LoRa-class encrypted mesh communication. Each node acts as a micro-router, forwarding classified threat packets without requiring high-power cellular or satellite transceivers at individual node points.",
+        "Sector Gateway running on Raspberry Pi CM4 with SX1303 LoRa concentrator. Receives 42-byte binary payloads from 100 mesh nodes, solves Levenberg-Marquardt Non-Linear Least Squares TDOA equations (<10m error), and runs Bayesian Decision Fusion.",
       specs: [
-        "Protocol: Multi-hop mesh topology with dynamic rerouting",
-        "Encryption: Hardware AES-256 encrypted payload",
-        "Frequency: Sub-GHz tactical telemetry band",
-        "Range: 800m - 1.5km node-to-node hop distance",
+        "Baseband: Semtech SX1303 8-channel concurrent LoRa reception",
+        "TDOA Engine: Levenberg-Marquardt non-linear solver (sub-10m radial accuracy)",
+        "Timing: U-blox MAX-M10S GPS PPS (<30ns synchronization jitter)",
+        "Backhaul: Quectel LTE Cat 4 modem with automatic SATCOM failover",
       ],
     },
     {
       id: 2,
-      title: "Sector Gateway",
-      badge: "DATA AGGREGATION & UPLINK",
+      title: "Autonomous Drone Docks & VTOL UAVs",
+      badge: "TIER 3: AERIAL RESPONSE LAYER",
       description:
-        "Positioned at secure tactical posts or high ground, the sector gateway aggregates telemetry from 30–50 mesh nodes, fuses multi-node spatial correlation, and transmits alerts via military satellite or fiber backhaul.",
+        "5 Autonomous Weatherproof Docking Stations per 5km sector. Once the Gateway Bayesian threat confidence exceeds 0.75, the dock retracts its lid in <3s and launches a self-controlled VTOL quadcopter in <15s directly to the pinpointed TDOA coordinates for thermal verification.",
       specs: [
-        "Capacity: Up to 64 active mesh nodes per gateway",
-        "Backhaul: Dual SATCOM / Mil-spec UHF / Tactical Ethernet",
-        "Processing: Sector-level spatial triangulation",
-        "Power: Solar + 24V tactical DC battery backup",
+        "Docks: 5 units per 5km sector, IP65 marine aluminum, Qi wireless charging",
+        "Launch Latency: < 15 seconds from ground seismic trigger to airborne",
+        "UAV Payload: FLIR Boson 640 Thermal Core (640x512) + 4K Electro-Optical",
+        "UAV Endurance & Range: 35 minutes continuous flight, 5 km radius, 15 m/s wind tolerance",
       ],
     },
     {
       id: 3,
-      title: "Command Post Tactical Dashboard",
-      badge: "INTEGRATED C4I INTERFACE",
+      title: "Command & Control Dashboard",
+      badge: "TIER 4: C2 TACTICAL OPERATIONS",
       description:
-        "Command personnel receive instant threat visualizations showing geographic coordinates, threat type (digging vs foot movement vs vehicle), confidence percentage, and automated QRF (Quick Reaction Force) dispatch vectors.",
+        "High-performance tactical command portal engineered for Sector Commanders and Battalion HQ. Displays real-time military grid overlays (MapLibre GL), live UAV thermal/optical video streams, node telemetry, and automated Quick Reaction Force (QRF) dispatch vectors.",
       specs: [
-        "Latency: &lt;2.5 seconds from physical ground impact to UI alert",
-        "Visualization: 2D/3D border terrain overlay with heatmaps",
-        "Integration: Compatible with Indian Army GIS and C4I systems",
-        "Audit Trail: Immutable forensic log of all seismic anomalies",
+        "System Latency: < 2 seconds from ground wave impact to C2 alert",
+        "Live Video: Low-latency WebRTC / RTSP thermal stream from dispatched UAV",
+        "Integration: Compatible with Indian Army GIS and C4I command systems",
+        "Audit Trail: Immutable TimescaleDB ledger of all seismic & aerial detections",
       ],
     },
   ];
@@ -70,13 +70,13 @@ export function SystemArchitectureSection() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-xs font-mono text-cyan-400 mb-4">
               <Network className="w-3.5 h-3.5" />
-              <span>DISTRIBUTED MULTI-TIER MESH TOPOLOGY</span>
+              <span>4-TIER TRI-DOMAIN ARCHITECTURE</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               BHOOMI™ System Architecture
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
-              From subterranean micro-vibrations to the central command dashboard — an end-to-end resilient architecture engineered by <strong className="text-slate-200">NaX Nova LLP</strong> for high-altitude and remote border battlegrounds.
+              From subterranean micro-vibrations and edge TDOA localization to self-controlled aerial drone interceptors and central C2 operations — an integrated 4-tier system engineered by <strong className="text-slate-200">NaX Nova LLP</strong>.
             </p>
           </div>
         </ScrollReveal>
@@ -100,7 +100,7 @@ export function SystemArchitectureSection() {
                   >
                     {/* Step Number & Connector */}
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-bold">
                         TIER 0{idx + 1}
                       </span>
                       {idx < 3 && (
@@ -110,8 +110,8 @@ export function SystemArchitectureSection() {
 
                     <div className="flex items-center gap-2 mb-2">
                       {idx === 0 && <Radio className="w-4 h-4 text-emerald-400" />}
-                      {idx === 1 && <Network className="w-4 h-4 text-cyan-400" />}
-                      {idx === 2 && <Server className="w-4 h-4 text-amber-400" />}
+                      {idx === 1 && <Server className="w-4 h-4 text-cyan-400" />}
+                      {idx === 2 && <Plane className="w-4 h-4 text-amber-400" />}
                       {idx === 3 && <Monitor className="w-4 h-4 text-purple-400" />}
                       <h4 className="text-sm font-bold text-white tracking-wide">
                         {comp.title}

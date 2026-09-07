@@ -1,13 +1,14 @@
 import React from "react";
 import { SensorNodeExploded } from "@/components/technology/SensorNodeExploded";
+import { DroneDockExploded } from "@/components/technology/DroneDockExploded";
 import { FusionPipeline } from "@/components/technology/FusionPipeline";
 import { TechnicalSpecs } from "@/components/technology/TechnicalSpecs";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Cpu, ShieldCheck, Zap, Radio, Layers } from "lucide-react";
+import { Cpu, ShieldCheck, Zap, Radio, Layers, Plane } from "lucide-react";
 
 export const metadata = {
   title: "Technology & Architecture | BHOOMI Defence Deeptech",
-  description: "Deep dive into BHOOMI sensor node engineering, edge-AI seismic-acoustic fusion algorithms, and encrypted LoRa mesh architecture.",
+  description: "Deep dive into BHOOMI sensor node engineering, autonomous drone docking station with <15s launch, edge-AI seismic-acoustic fusion algorithms, and encrypted LoRa mesh.",
 };
 
 export default function TechnologyPage() {
@@ -22,28 +23,37 @@ export default function TechnologyPage() {
               <span>DEFENCE DEEPTECH SYSTEM ARCHITECTURE</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-              Engineering the Unseen Defense Layer
+              Engineering the Tri-Domain Defense Layer
             </h1>
             <p className="mt-4 text-base text-slate-300 leading-relaxed">
-              Combining micro-seismology, acoustic phononics, and ultra-low-power edge artificial intelligence to deliver persistent underground and surface surveillance without detectable RF emissions.
+              Combining micro-seismology, acoustic phononics, ultra-low-power edge artificial intelligence, and self-controlled VTOL drone interceptors to deliver persistent subterranean, surface, and aerial border defense.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Section 1: Exploded Node Hardware */}
         <ScrollReveal delay={0.1}>
-          <SensorNodeExploded />
+          <div id="sensor-node">
+            <SensorNodeExploded />
+          </div>
         </ScrollReveal>
 
-        {/* Section 2: Fusion Pipeline */}
+        {/* Section 2: Exploded Drone Docking Station & VTOL UAV */}
+        <ScrollReveal delay={0.15}>
+          <div id="drone-dock">
+            <DroneDockExploded />
+          </div>
+        </ScrollReveal>
+
+        {/* Section 3: Fusion Pipeline */}
         <ScrollReveal delay={0.2}>
           <div id="fusion">
             <FusionPipeline />
           </div>
         </ScrollReveal>
 
-        {/* Section 3: Technical Specifications */}
-        <ScrollReveal delay={0.3}>
+        {/* Section 4: Technical Specifications */}
+        <ScrollReveal delay={0.25}>
           <div id="specs">
             <TechnicalSpecs />
           </div>

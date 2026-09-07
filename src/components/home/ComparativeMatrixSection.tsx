@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Check, X, AlertCircle, ShieldAlert, CheckCircle2 } from "lucide-react";
+import { Check, X, AlertCircle, ShieldAlert, CheckCircle2, Plane } from "lucide-react";
 
 export function ComparativeMatrixSection() {
   const comparisonData = [
@@ -11,14 +11,14 @@ export function ComparativeMatrixSection() {
       optical: { status: "no", text: "No (Line-of-sight fails)" },
       radar: { status: "partial", text: "Partial (Foliage clutter)" },
       borehole: { status: "yes", text: "Yes" },
-      bhoomi: { status: "yes", text: "Yes (All-Weather)" },
+      bhoomi: { status: "yes", text: "Yes (All-Weather Seismic)" },
     },
     {
       capability: "Detects Sub-Surface Tunnelling",
       optical: { status: "no", text: "No capability" },
       radar: { status: "no", text: "No (Surface only)" },
       borehole: { status: "partial", text: "Yes (Localised only)" },
-      bhoomi: { status: "yes", text: "Yes (Distributed Mesh)" },
+      bhoomi: { status: "yes", text: "Yes (Distributed Mesh to 15m)" },
     },
     {
       capability: "Passive & Undetectable to Adversary",
@@ -28,18 +28,32 @@ export function ComparativeMatrixSection() {
       bhoomi: { status: "yes", text: "Yes (Zero RF Emission)" },
     },
     {
+      capability: "Autonomous Aerial Verification (Drone)",
+      optical: { status: "no", text: "No (Stationary masts)" },
+      radar: { status: "no", text: "No aerial verification" },
+      borehole: { status: "no", text: "No aerial capability" },
+      bhoomi: { status: "yes", text: "Yes (VTOL Drone launches in <15s)" },
+    },
+    {
+      capability: "Continuous Aerial Patrol Battery Bottleneck",
+      optical: { status: "no", text: "N/A" },
+      radar: { status: "no", text: "N/A" },
+      borehole: { status: "no", text: "N/A" },
+      bhoomi: { status: "yes", text: "Solved (Event-Triggered Docking)" },
+    },
+    {
       capability: "Capital & Deployment Cost per km",
       optical: { status: "no", text: "High (Cameras + masts)" },
       radar: { status: "no", text: "Very High" },
       borehole: { status: "no", text: "High (Drilling rigs)" },
-      bhoomi: { status: "yes", text: "Low (Shallow Spike)" },
+      bhoomi: { status: "yes", text: "Low (~₹9.94 L/km turnkey)" },
     },
     {
       capability: "Continuous Long-Border Scalability",
       optical: { status: "partial", text: "Moderate (Blind spots)" },
       radar: { status: "no", text: "Low (Expensive gaps)" },
       borehole: { status: "no", text: "Low (Specialist crew)" },
-      bhoomi: { status: "yes", text: "High (Mass Deployable)" },
+      bhoomi: { status: "yes", text: "High (5km Modular Sector Kits)" },
     },
   ];
 
@@ -50,13 +64,13 @@ export function ComparativeMatrixSection() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-mono text-emerald-400 mb-4">
               <ShieldAlert className="w-3.5 h-3.5" />
-              <span>MARKET & COMPETITIVE BENCHMARKING</span>
+              <span>TRI-DOMAIN COMPETITIVE BENCHMARKING</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               BHOOMI™ vs Conventional Border Surveillance
             </h2>
             <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
-              Why optical cameras and active radars leave critical operational vulnerabilities during subterranean tunnel excavation and low-visibility covert infiltration attempts.
+              Why optical cameras, ground radars, and continuous UAV patrols fail to protect complex border perimeters — and how BHOOMI&apos;s event-triggered tri-domain network solves each operational gap.
             </p>
           </div>
         </ScrollReveal>
@@ -73,7 +87,7 @@ export function ComparativeMatrixSection() {
                     <th className="py-4 px-4 font-semibold text-slate-400">Ground Radar</th>
                     <th className="py-4 px-4 font-semibold text-slate-400">Borehole Seismometer</th>
                     <th className="py-4 px-6 font-bold text-emerald-400 bg-emerald-950/30 border-l border-r border-emerald-500/30">
-                      BHOOMI™ (NaX Nova)
+                      BHOOMI™ (Tri-Domain)
                     </th>
                   </tr>
                 </thead>
@@ -137,7 +151,7 @@ export function ComparativeMatrixSection() {
 
             {/* Table Footer Note */}
             <div className="p-4 bg-slate-950 border-t border-slate-800 text-[11px] font-mono text-slate-400 flex items-center justify-between">
-              <span>* NaX Nova&apos;s BHOOMI™ directly solves the persistent capability gap left open by existing border surveillance infrastructure.</span>
+              <span>* Autonomous drones solve the 35-min UAV patrol limitation by launching only on high-confidence seismic alarms in &lt;15 seconds.</span>
               <span className="text-emerald-400 hidden sm:inline">NAX NOVA DEFENCE INNOVATIONS</span>
             </div>
           </div>

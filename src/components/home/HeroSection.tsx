@@ -1,13 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { RadarSweep } from "@/components/animations/RadarSweep";
-import { Shield, Radio, ArrowRight, Zap, Target, Lock, FileText, CheckCircle2, ChevronRight } from "lucide-react";
+import { DroneInterceptorHUD } from "@/components/animations/DroneInterceptorHUD";
+import {
+  Shield,
+  Radio,
+  ArrowRight,
+  Zap,
+  Target,
+  FileText,
+  CheckCircle2,
+  ChevronRight,
+  Flame,
+  Plane,
+  Eye
+} from "lucide-react";
 
 export function HeroSection() {
+  const [hudView, setHudView] = useState<"drone" | "radar">("drone");
+
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-[#06080e] bg-tactical-grid flex items-center">
       {/* Ambient background glows */}
@@ -31,7 +45,7 @@ export function HeroSection() {
               </span>
               <span className="font-bold tracking-wider">NAX NOVA LLP</span>
               <span className="text-slate-500">•</span>
-              <span className="text-slate-300">DEFENCE DEEPTECH INNOVATIONS</span>
+              <span className="text-slate-300">TRI-DOMAIN DEFENCE DEEPTECH</span>
             </motion.div>
 
             {/* Main Product Headline */}
@@ -40,21 +54,21 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
                 <span className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-mono">
                   BHOOMI<span className="text-emerald-400 text-3xl align-top">™</span>
                 </span>
                 <span className="text-xs font-mono font-bold px-2.5 py-1 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">
-                  DEFENCE SENSOR MESH
+                  V1.0 MULTI-DOMAIN INFRASTRUCTURE
                 </span>
               </div>
 
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-300 bg-clip-text text-transparent">
-                Passive Seismic–Acoustic Fusion Network
+                Passive Ground Mesh & Autonomous Drone Interceptors
               </h2>
 
               <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-sans">
-                Developed by <strong className="text-white">NaX Nova LLP</strong>, BHOOMI™ delivers persistent, zero-emission real-time detection of <strong className="text-white">sub-surface tunnel excavation</strong> and <strong className="text-white">stealth border infiltration</strong> across fog, torrential monsoons, and dense foliage where optical cameras and radars fail.
+                Engineered by <strong className="text-white">NaX Nova LLP</strong>, BHOOMI™ delivers persistent 100% passive detection of <strong className="text-white">sub-surface tunnel excavation</strong> and <strong className="text-white">stealth border infiltration</strong>. When a threat alarm is raised, the platform automatically cues and launches a <strong className="text-emerald-400">self-controlled VTOL drone</strong> to the pinpointed TDOA coordinates in <strong className="text-white">&lt;15 seconds</strong> for instant thermal aerial verification.
               </p>
             </motion.div>
 
@@ -63,24 +77,30 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-mono text-xs"
             >
-              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">DETECTION METHOD</div>
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-colors">
+                <div className="text-slate-500 text-[10px] uppercase font-semibold">DETECTION</div>
                 <div className="text-emerald-400 font-bold mt-0.5">100% PASSIVE</div>
-                <div className="text-[10px] text-slate-400">Zero RF enemy detectability</div>
+                <div className="text-[10px] text-slate-400">Zero RF signature</div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">SURVEILLANCE ZONE</div>
-                <div className="text-cyan-400 font-bold mt-0.5">SUB-SURFACE & GROUND</div>
-                <div className="text-[10px] text-slate-400">Up to 15m underground depth</div>
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 transition-colors">
+                <div className="text-slate-500 text-[10px] uppercase font-semibold">TUNNEL DEPTH</div>
+                <div className="text-cyan-400 font-bold mt-0.5">UP TO 15M</div>
+                <div className="text-[10px] text-slate-400">Rayleigh & P/S waves</div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 col-span-2 sm:col-span-1 hover:border-amber-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">EDGE AI ACCURACY</div>
-                <div className="text-amber-400 font-bold mt-0.5">&gt;90% ACCURACY</div>
-                <div className="text-[10px] text-slate-400">&lt;5% false alarm ratio</div>
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/30 transition-colors">
+                <div className="text-slate-500 text-[10px] uppercase font-semibold">CUED DRONE</div>
+                <div className="text-amber-400 font-bold mt-0.5">&lt; 15 SEC LAUNCH</div>
+                <div className="text-[10px] text-slate-400">Auto-dispatched on alarm</div>
+              </div>
+
+              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/30 transition-colors">
+                <div className="text-slate-500 text-[10px] uppercase font-semibold">THERMAL CORE</div>
+                <div className="text-purple-400 font-bold mt-0.5">FLIR BOSON 640</div>
+                <div className="text-[10px] text-slate-400">Night / fog visual lock</div>
               </div>
             </motion.div>
 
@@ -89,7 +109,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-4 pt-3"
+              className="flex flex-wrap items-center gap-3 pt-3"
             >
               <Link
                 href="/contact"
@@ -101,19 +121,19 @@ export function HeroSection() {
               </Link>
 
               <Link
-                href="/#simulation"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs tracking-wider transition-all"
+                href="/product-doc"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-cyan-950/40 hover:bg-cyan-900/50 text-cyan-300 border border-cyan-500/40 font-mono text-xs tracking-wider transition-all"
               >
-                <Zap className="w-4 h-4 text-emerald-400" />
-                <span>INTERACTIVE SIMULATOR</span>
+                <FileText className="w-4 h-4 text-cyan-400" />
+                <span>PRODUCT DESIGN DOC (PDD v1.0)</span>
               </Link>
 
               <Link
-                href="/technology"
-                className="inline-flex items-center gap-1.5 px-4 py-3.5 text-xs text-slate-400 hover:text-emerald-300 font-mono transition-colors"
+                href="/#simulation"
+                className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs tracking-wider transition-all"
               >
-                <span>Product Specs</span>
-                <ChevronRight className="w-3.5 h-3.5" />
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span>DRONE SIMULATOR</span>
               </Link>
             </motion.div>
 
@@ -130,23 +150,96 @@ export function HeroSection() {
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Made in India (Atmanirbhar Bharat)</span>
+                <span>Autonomous VTOL Drone Response Layer</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Turnkey Tactical Deployment</span>
+                <span>5KM Modular Sector Kit Ready</span>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column: Tactical Radar Sweep HUD */}
-          <div className="lg:col-span-5">
+          {/* Right Column: Eye-Catching Drone Interceptor HUD with Radar Toggle */}
+          <div className="lg:col-span-5 space-y-3">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              <RadarSweep activeSector="SECTOR 04 (LoC NORTH) — BHOOMI MESH" />
+              {/* HUD Selector Tabs */}
+              <div className="flex items-center justify-between mb-2 px-1">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setHudView("drone")}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold tracking-wider transition-all ${
+                      hudView === "drone"
+                        ? "bg-emerald-500 text-slate-950 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                        : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white"
+                    }`}
+                  >
+                    <Plane className="w-3.5 h-3.5" />
+                    <span>AUTONOMOUS VTOL DRONE</span>
+                    <span className="ml-1 px-1 py-0.2 rounded bg-black/40 text-[9px]">LIVE</span>
+                  </button>
+
+                  <button
+                    onClick={() => setHudView("radar")}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold tracking-wider transition-all ${
+                      hudView === "radar"
+                        ? "bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.3)]"
+                        : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white"
+                    }`}
+                  >
+                    <Radio className="w-3.5 h-3.5" />
+                    <span>SEISMIC RADAR</span>
+                  </button>
+                </div>
+
+                <span className="text-[10px] font-mono text-emerald-400 hidden sm:inline animate-pulse">
+                  ● MESH ONLINE
+                </span>
+              </div>
+
+              {/* Display HUD View */}
+              <AnimatePresence mode="wait">
+                {hudView === "drone" ? (
+                  <motion.div
+                    key="drone-hud"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <DroneInterceptorHUD />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="radar-hud"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <RadarSweep activeSector="SECTOR 04 (LoC NORTH) — BHOOMI MESH" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Quick Specification Strip */}
+              <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-mono pt-1 text-slate-400">
+                <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+                  <span className="text-slate-500 block text-[9px]">LAUNCH LATENCY</span>
+                  <span className="text-emerald-400 font-bold">&lt; 15 SECONDS</span>
+                </div>
+                <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+                  <span className="text-slate-500 block text-[9px]">THERMAL SENSOR</span>
+                  <span className="text-amber-400 font-bold">FLIR BOSON 640</span>
+                </div>
+                <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+                  <span className="text-slate-500 block text-[9px]">DOCK CHARGING</span>
+                  <span className="text-cyan-400 font-bold">QI INDUCTIVE 15W</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

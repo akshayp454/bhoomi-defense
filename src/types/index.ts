@@ -16,6 +16,20 @@ export interface WhitepaperRequestInput {
 
 export type ThreatScenario = "digging" | "infiltration" | "vehicle" | "wildlife";
 
+export type DroneState = "docked" | "launching" | "en_route" | "target_locked" | "returning";
+
+export interface DroneResponseAction {
+  activated: boolean;
+  status: DroneState;
+  dockId: string;
+  launchTimeSeconds: number;
+  targetCoords: string;
+  thermalPayload: string;
+  opticalFeed: string;
+  estimatedArrivalSeconds: number;
+  missionObjective: string;
+}
+
 export interface ScenarioDetail {
   id: ThreatScenario;
   title: string;
@@ -37,6 +51,7 @@ export interface ScenarioDetail {
     alertColor: "red" | "amber" | "emerald";
     explanation: string;
   };
+  droneResponse?: DroneResponseAction;
 }
 
 export interface BudgetHead {
@@ -45,4 +60,12 @@ export interface BudgetHead {
   phase2: number;
   phase3: number;
   total: number;
+}
+
+export interface SectorHardwareItem {
+  item: string;
+  quantity: number | string;
+  unitCostInr: number;
+  totalCostInr: number;
+  notes: string;
 }

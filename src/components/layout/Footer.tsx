@@ -59,18 +59,23 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/technology" className="hover:text-emerald-400 transition-colors">
+                <Link href="/product-doc" className="text-emerald-400 font-semibold hover:underline transition-colors flex items-center gap-1">
+                  <span>Product Design Doc (PDD v1.0)</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/technology#drone-dock" className="hover:text-amber-400 transition-colors">
+                  Autonomous Drone Dock &amp; VTOL UAV
+                </Link>
+              </li>
+              <li>
+                <Link href="/technology#sensor-node" className="hover:text-emerald-400 transition-colors">
                   Sensor Node Architecture
                 </Link>
               </li>
               <li>
                 <Link href="/technology#fusion" className="hover:text-emerald-400 transition-colors">
                   Edge-AI Sensor Fusion
-                </Link>
-              </li>
-              <li>
-                <Link href="/technology#mesh" className="hover:text-emerald-400 transition-colors">
-                  Encrypted LoRa Mesh Relay
                 </Link>
               </li>
               <li>

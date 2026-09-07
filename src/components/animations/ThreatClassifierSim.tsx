@@ -4,7 +4,22 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SeismicWaveform } from "./SeismicWaveform";
 import { ThreatScenario, ScenarioDetail } from "@/types";
-import { Activity, ShieldAlert, Cpu, CheckCircle2, AlertTriangle, Radio } from "lucide-react";
+import {
+  Activity,
+  ShieldAlert,
+  Cpu,
+  CheckCircle2,
+  AlertTriangle,
+  Radio,
+  Plane,
+  Camera,
+  Crosshair,
+  Compass,
+  ArrowRight,
+  Maximize2,
+  Shield,
+  Zap
+} from "lucide-react";
 
 const SCENARIOS: Record<ThreatScenario, ScenarioDetail> = {
   digging: {
@@ -29,6 +44,18 @@ const SCENARIOS: Record<ThreatScenario, ScenarioDetail> = {
       explanation:
         "High localized seismic periodicity paired with attenuated acoustic signature matches subterranean tool impact profile. Cross-verification eliminates surface noise.",
     },
+    droneResponse: {
+      activated: true,
+      status: "target_locked",
+      dockId: "DOCK 03 (SURVEY POST BRAVO)",
+      launchTimeSeconds: 12.2,
+      targetCoords: "34°12'22.1\"N 74°22'48.5\"E",
+      thermalPayload: "FLIR Boson 640 LWIR [Thermal Anomaly: Sub-Surface Shaft]",
+      opticalFeed: "High-contrast FLIR White-Hot IR Stream",
+      estimatedArrivalSeconds: 24,
+      missionObjective:
+        "Autonomous Intercept: Vector to subterranean acoustic epicenter, verify spoil heap / shaft entrance with thermal sensor.",
+    },
   },
   infiltration: {
     id: "infiltration",
@@ -51,6 +78,18 @@ const SCENARIOS: Record<ThreatScenario, ScenarioDetail> = {
       alertColor: "red",
       explanation:
         "Temporal synchronization between ground micro-vibration and near-ground acoustic rustle verifies human traversal through zero-visibility forest cover.",
+    },
+    droneResponse: {
+      activated: true,
+      status: "target_locked",
+      dockId: "DOCK 01 (FORWARD REDOUBT)",
+      launchTimeSeconds: 11.4,
+      targetCoords: "34°11'58.2\"N 74°21'39.0\"E",
+      thermalPayload: "FLIR Boson 640 LWIR [Human Heat Bloom: 37.0°C Cadenced Traversal]",
+      opticalFeed: "Low-Light 4K EO + 640x512 Thermal Overlay",
+      estimatedArrivalSeconds: 19,
+      missionObjective:
+        "Stealth Intercept: Ascend to 50m AGL, track moving human heat signature through dense foliage, cue QRF team.",
     },
   },
   vehicle: {
@@ -75,6 +114,18 @@ const SCENARIOS: Record<ThreatScenario, ScenarioDetail> = {
       explanation:
         "Dual broadband high amplitude verified across 3 consecutive mesh nodes. Sector tracking vector activated.",
     },
+    droneResponse: {
+      activated: true,
+      status: "en_route",
+      dockId: "DOCK 04 (HIGH RIDGE STATION)",
+      launchTimeSeconds: 13.8,
+      targetCoords: "34°13'05.8\"N 74°23'12.4\"E",
+      thermalPayload: "FLIR Boson 640 LWIR [Engine Block & Axle Thermal Heat: 180°C]",
+      opticalFeed: "Continuous Wide-Area Tracking Vector",
+      estimatedArrivalSeconds: 31,
+      missionObjective:
+        "Convoy Tracking: Monitor road corridor, track velocity and vehicle profile, stream telemetry to Battalion HQ.",
+    },
   },
   wildlife: {
     id: "wildlife",
@@ -98,26 +149,40 @@ const SCENARIOS: Record<ThreatScenario, ScenarioDetail> = {
       explanation:
         "Lack of seismic-acoustic phase coherence triggers edge suppression. False alarm averted without waking command personnel.",
     },
+    droneResponse: {
+      activated: false,
+      status: "docked",
+      dockId: "ALL DOCKS (WEATHERPROOF DOCKED)",
+      launchTimeSeconds: 0,
+      targetCoords: "N/A — Noise Suppressed",
+      thermalPayload: "Standby (Conserving Battery & Stealth)",
+      opticalFeed: "No UAV Launch Required",
+      estimatedArrivalSeconds: 0,
+      missionObjective:
+        "Drone Standby: Edge neural network eliminated false alarm; zero unnecessary UAV battery depletion or noise generation.",
+    },
   },
 };
 
 export function ThreatClassifierSim() {
   const [activeScenario, setActiveScenario] = useState<ThreatScenario>("digging");
+  const [thermalPalette, setThermalPalette] = useState<"white_hot" | "ironbow">("white_hot");
   const current = SCENARIOS[activeScenario];
+  const drone = current.droneResponse;
 
   return (
-    <div className="w-full rounded-2xl border border-slate-800 bg-[#080c15] p-5 sm:p-7 shadow-2xl">
+    <div className="w-full rounded-2xl border border-slate-800 bg-[#080c15] p-5 sm:p-7 shadow-2xl space-y-6">
       {/* HUD Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
         <div>
           <div className="flex items-center gap-2">
             <Cpu className="h-5 w-5 text-emerald-400" />
             <h3 className="text-lg font-bold text-white tracking-wide">
-              BHOOMI EDGE-AI SENSOR FUSION SIMULATOR
+              BHOOMI EDGE-AI & AUTONOMOUS DRONE ACTIVATION SIMULATOR
             </h3>
           </div>
           <p className="text-xs text-slate-400 mt-1 font-mono">
-            Interactive demonstration of dual-modality cross-verification running on MCU node
+            Simulating ground seismic-acoustic cross-verification and event-triggered autonomous VTOL drone launch
           </p>
         </div>
 
@@ -125,13 +190,13 @@ export function ThreatClassifierSim() {
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700">
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-[11px] font-mono text-emerald-300 font-semibold tracking-wider">
-            EDGE INFERENCE: ACTIVE
+            TRI-DOMAIN FUSION: ACTIVE
           </span>
         </div>
       </div>
 
       {/* Scenario Selectors */}
-      <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5">
         {(Object.keys(SCENARIOS) as ThreatScenario[]).map((key) => {
           const item = SCENARIOS[key];
           const isSelected = activeScenario === key;
@@ -160,19 +225,19 @@ export function ThreatClassifierSim() {
       </div>
 
       {/* Real-time Waveform Display */}
-      <div className="mt-6">
+      <div>
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
             <Activity className="h-3.5 w-3.5 text-emerald-400" />
             LIVE SIGNAL STREAMS (SEISMIC MICRO-VIBRATION + ACOUSTIC HARMONICS)
           </span>
-          <span className="text-[11px] font-mono text-cyan-400">SAMPLING: 250 Hz</span>
+          <span className="text-[11px] font-mono text-cyan-400">SAMPLING: 250 Hz (24-BIT ADS1256)</span>
         </div>
-        <SeismicWaveform scenario={activeScenario} height={170} />
+        <SeismicWaveform scenario={activeScenario} height={160} />
       </div>
 
       {/* Dual Channel Analytics & Fusion Verdict */}
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Seismic Channel Box */}
         <div className="p-4 rounded-xl border border-emerald-500/20 bg-emerald-950/10">
           <div className="text-[11px] font-mono text-emerald-400 font-bold mb-1.5 flex items-center justify-between">
@@ -206,24 +271,28 @@ export function ThreatClassifierSim() {
         </div>
 
         {/* AI Cross-Verification Verdict */}
-        <div className={`p-4 rounded-xl border ${
-          current.fusionResult.alertColor === "red"
-            ? "border-red-500/40 bg-red-950/15"
-            : current.fusionResult.alertColor === "amber"
-            ? "border-amber-500/40 bg-amber-950/15"
-            : "border-emerald-500/40 bg-emerald-950/15"
-        }`}>
+        <div
+          className={`p-4 rounded-xl border ${
+            current.fusionResult.alertColor === "red"
+              ? "border-red-500/40 bg-red-950/15"
+              : current.fusionResult.alertColor === "amber"
+              ? "border-amber-500/40 bg-amber-950/15"
+              : "border-emerald-500/40 bg-emerald-950/15"
+          }`}
+        >
           <div className="flex items-center justify-between mb-2">
             <span className="text-[10px] font-mono tracking-wider text-slate-400 uppercase">
               CROSS-VERIFIED DECISION
             </span>
-            <span className={`text-xs font-mono font-bold ${
-              current.fusionResult.alertColor === "red"
-                ? "text-red-400"
-                : current.fusionResult.alertColor === "amber"
-                ? "text-amber-400"
-                : "text-emerald-400"
-            }`}>
+            <span
+              className={`text-xs font-mono font-bold ${
+                current.fusionResult.alertColor === "red"
+                  ? "text-red-400"
+                  : current.fusionResult.alertColor === "amber"
+                  ? "text-amber-400"
+                  : "text-emerald-400"
+              }`}
+            >
               {current.fusionResult.confidence}% CONFIDENCE
             </span>
           </div>
@@ -245,6 +314,146 @@ export function ThreatClassifierSim() {
             {current.fusionResult.explanation}
           </p>
         </div>
+      </div>
+
+      {/* AUTONOMOUS DRONE QUICK-REACTION MODULE (TRIGGERED ON ALARM) */}
+      <div className="p-5 rounded-xl border border-slate-800 bg-[#060910] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800/80">
+          <div className="flex items-center gap-2.5">
+            <div className="p-1.5 rounded-lg bg-emerald-950 border border-emerald-500/40 text-emerald-400">
+              <Plane className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h4 className="text-sm font-bold text-white font-mono tracking-wide">
+                  TIER 3: AUTONOMOUS DRONE QUICK-REACTION NETWORK
+                </h4>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30">
+                  EVENT-TRIGGERED
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-400 font-mono">
+                Once ground alarm threshold is crossed (Confidence &gt; 0.75), Sector Gateway auto-dispatches nearest VTOL drone
+              </p>
+            </div>
+          </div>
+
+          {/* Drone Status Pill */}
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            {drone?.activated ? (
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-950/70 border border-red-500/50 text-red-300 text-xs font-mono font-bold shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
+                <span>DRONE CUED: LAUNCH IN {drone.launchTimeSeconds}s</span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>DRONE HARBORED IN DOCK (SAVING POWER)</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 5-Step Detection-to-Aerial-Response Timeline */}
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 text-[10px] font-mono">
+          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+            <span className="text-slate-500 block">STEP 01</span>
+            <span className="text-white font-bold block mt-0.5">Seismic Exceedance</span>
+            <span className="text-slate-400 text-[9px]">Geophone wakes Cortex-M7</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+            <span className="text-slate-500 block">STEP 02</span>
+            <span className="text-white font-bold block mt-0.5">1D-CNN Inference</span>
+            <span className="text-emerald-400 text-[9px]">Classified in 18ms</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+            <span className="text-slate-500 block">STEP 03</span>
+            <span className="text-white font-bold block mt-0.5">TDOA Pinpoint</span>
+            <span className="text-cyan-400 text-[9px]">Sub-10m radial error</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+            <span className="text-slate-500 block">STEP 04</span>
+            <span className="text-white font-bold block mt-0.5">Dock Lid Actuation</span>
+            <span className="text-amber-400 text-[9px]">Retracts roof in &lt;3s</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
+            <span className="text-slate-500 block">STEP 05</span>
+            <span className="text-white font-bold block mt-0.5">Autonomous Launch</span>
+            <span className="text-emerald-400 text-[9px] font-bold">&lt;15s to Airborne</span>
+          </div>
+        </div>
+
+        {/* Live Drone Mission Telemetry & Simulated FLIR Thermal Feed */}
+        {drone?.activated ? (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center pt-2">
+            {/* Mission Telemetry Data */}
+            <div className="lg:col-span-6 space-y-2.5 text-xs font-mono">
+              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <span className="text-slate-400">DISPATCHED BASE:</span>
+                <span className="text-white font-bold">{drone.dockId}</span>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <span className="text-slate-400">TDOA GPS TARGET:</span>
+                <span className="text-amber-400 font-bold">{drone.targetCoords}</span>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <span className="text-slate-400">THERMAL SENSOR:</span>
+                <span className="text-emerald-400 font-bold">FLIR Boson 640 (LWIR)</span>
+              </div>
+              <div className="p-3 rounded-lg bg-slate-950 border border-slate-800">
+                <span className="text-slate-400 block text-[10px] mb-1">TACTICAL MISSION DIRECTIVE:</span>
+                <p className="text-[11px] text-slate-300 font-sans leading-relaxed">
+                  {drone.missionObjective}
+                </p>
+              </div>
+            </div>
+
+            {/* Simulated Live FLIR Thermal Video Feed */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-xl overflow-hidden border border-amber-500/40 bg-black p-4 h-52 flex flex-col justify-between shadow-[0_0_20px_rgba(245,158,11,0.15)]">
+                {/* Thermal HUD Header */}
+                <div className="flex items-center justify-between text-[10px] font-mono text-amber-300 z-10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-red-500 animate-ping" />
+                    <span className="font-bold">LIVE UAV THERMAL FEED [FLIR BOSON 640]</span>
+                  </div>
+                  <div className="text-slate-400">FOV: 34° • 30 FPS</div>
+                </div>
+
+                {/* Simulated Thermal Scope View with Target Heat Bloom */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  {/* Subtle thermal scanlines */}
+                  <div className="absolute inset-0 bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px] opacity-40" />
+
+                  {/* Crosshairs */}
+                  <div className="w-32 h-32 border border-amber-500/30 rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 border-2 border-amber-400/70 rounded-md flex items-center justify-center">
+                      <Crosshair className="w-6 h-6 text-amber-400 animate-spin" style={{ animationDuration: "20s" }} />
+                    </div>
+                  </div>
+
+                  {/* Simulated Thermal Heat Signature Blip */}
+                  <div className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-red-600 via-amber-400 to-yellow-200 blur-[3px] animate-pulse" />
+                </div>
+
+                {/* Thermal HUD Bottom Data */}
+                <div className="flex items-center justify-between text-[10px] font-mono text-slate-300 z-10 border-t border-slate-800/80 pt-1.5">
+                  <div>LAT: {drone.targetCoords.split(" ")[0]}</div>
+                  <div className="text-emerald-400 font-bold">TARGET LOCKED [P=0.95]</div>
+                  <div>ZOOM: 2.0x</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex items-center gap-3">
+            <Shield className="w-5 h-5 text-emerald-400 shrink-0" />
+            <div className="text-xs font-mono text-slate-300">
+              <strong className="text-emerald-300">Smart Power Conservation: </strong>
+              Because the Edge AI identified the event as benign wildlife/wind with 96.2% confidence, the autonomous drone remains in sleep mode inside its weatherproof dock. This eliminates false aerial alarms and preserves battery autonomy for actual hostile threats.
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
