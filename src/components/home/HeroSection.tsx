@@ -79,28 +79,44 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 font-mono text-xs"
             >
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">DETECTION</div>
-                <div className="text-emerald-400 font-bold mt-0.5">100% PASSIVE</div>
-                <div className="text-[10px] text-slate-400">Zero RF signature</div>
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 transition-all flex items-center gap-3 shadow-lg">
+                <div className="w-8 h-8 rounded-lg bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                  <Shield className="w-4 h-4 text-emerald-400" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase">SIGNATURE</div>
+                  <div className="text-white font-bold text-xs">100% Passive</div>
+                </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">TUNNEL DEPTH</div>
-                <div className="text-cyan-400 font-bold mt-0.5">UP TO 15M</div>
-                <div className="text-[10px] text-slate-400">Rayleigh & P/S waves</div>
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 transition-all flex items-center gap-3 shadow-lg">
+                <div className="w-8 h-8 rounded-lg bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center shrink-0">
+                  <Target className="w-4 h-4 text-cyan-400" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase">TUNNEL DEPTH</div>
+                  <div className="text-white font-bold text-xs">Up to 15m</div>
+                </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-amber-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">CUED DRONE</div>
-                <div className="text-amber-400 font-bold mt-0.5">&lt; 15 SEC LAUNCH</div>
-                <div className="text-[10px] text-slate-400">Auto-dispatched on alarm</div>
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 transition-all flex items-center gap-3 shadow-lg">
+                <div className="w-8 h-8 rounded-lg bg-amber-950/60 border border-amber-500/30 flex items-center justify-center shrink-0">
+                  <Plane className="w-4 h-4 text-amber-400" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase">CUED LAUNCH</div>
+                  <div className="text-white font-bold text-xs">&lt;15s Airborne</div>
+                </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-purple-500/30 transition-colors">
-                <div className="text-slate-500 text-[10px] uppercase font-semibold">THERMAL CORE</div>
-                <div className="text-purple-400 font-bold mt-0.5">FLIR BOSON 640</div>
-                <div className="text-[10px] text-slate-400">Night / fog visual lock</div>
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 transition-all flex items-center gap-3 shadow-lg">
+                <div className="w-8 h-8 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center shrink-0">
+                  <Flame className="w-4 h-4 text-purple-400" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase">THERMAL CORE</div>
+                  <div className="text-white font-bold text-xs">FLIR Boson 640</div>
+                </div>
               </div>
             </motion.div>
 

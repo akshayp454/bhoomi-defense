@@ -180,48 +180,36 @@ export function OpticalVsThermalSlider() {
         </div>
       </div>
 
-      {/* Bottom Technical Benchmark Comparison Table */}
+      {/* Bottom Technical Benchmark Comparison (Visual Badges) */}
       <div className="bg-[#070b10] p-4 border-t border-slate-800">
         <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
           <Sparkles className="w-3 h-3 text-emerald-400" />
-          <span>MILITARY EVALUATION BENCHMARK // DENSE FOG &amp; BLIZZARD CONDITIONS</span>
+          <span>VISUAL PERFORMANCE DELTA // DENSE MOUNTAIN FOG &amp; BLIZZARD</span>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono">
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-            <div className="text-[10px] text-slate-400">DETECTION RANGE IN FOG</div>
-            <div className="flex items-baseline justify-between mt-1">
-              <span className="text-red-400 text-xs">Optical: 12m</span>
-              <span className="text-emerald-400 font-bold text-sm">FLIR: 1,200m</span>
-            </div>
-            <div className="text-[9px] text-emerald-500 mt-0.5">100× Range Advantage</div>
+          <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="text-[10px] text-slate-400">FOG PENETRATION</div>
+            <div className="text-emerald-400 font-bold text-sm mt-0.5">100× RANGE GAIN</div>
+            <div className="text-[10px] text-slate-400">1,200m vs 12m Optical</div>
           </div>
 
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-            <div className="text-[10px] text-slate-400">SIGNAL-TO-NOISE RATIO (SNR)</div>
-            <div className="flex items-baseline justify-between mt-1">
-              <span className="text-red-400 text-xs">Optical: -2.1 dB</span>
-              <span className="text-emerald-400 font-bold text-sm">FLIR: +36.3 dB</span>
-            </div>
-            <div className="text-[9px] text-emerald-500 mt-0.5">+38.4 dB Improvement</div>
+          <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="text-[10px] text-slate-400">TARGET ACQUISITION</div>
+            <div className="text-cyan-400 font-bold text-sm mt-0.5">INSTANT LOCK</div>
+            <div className="text-[10px] text-slate-400">37.0°C Body Heat Bloom</div>
           </div>
 
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-            <div className="text-[10px] text-slate-400">CAMOUFLAGE PENETRATION</div>
-            <div className="flex items-baseline justify-between mt-1">
-              <span className="text-red-400 text-xs">Optical: Zero</span>
-              <span className="text-emerald-400 font-bold text-sm">FLIR: 100% LWIR</span>
-            </div>
-            <div className="text-[9px] text-emerald-500 mt-0.5">Reveals 37°C Body Heat</div>
+          <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="text-[10px] text-slate-400">CAMOUFLAGE DEFEAT</div>
+            <div className="text-amber-400 font-bold text-sm mt-0.5">100% INFRARED</div>
+            <div className="text-[10px] text-slate-400">Pierces Netting & Foliage</div>
           </div>
 
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-            <div className="text-[10px] text-slate-400">FALSE ALARM RESILIENCE</div>
-            <div className="flex items-baseline justify-between mt-1">
-              <span className="text-red-400 text-xs">Optical: 68% FA</span>
-              <span className="text-emerald-400 font-bold text-sm">FLIR: &lt;0.5% FA</span>
-            </div>
-            <div className="text-[9px] text-emerald-500 mt-0.5">Dual-Spectrum Cross-Check</div>
+          <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="text-[10px] text-slate-400">FALSE ALARM SHIELD</div>
+            <div className="text-purple-400 font-bold text-sm mt-0.5">NEAR ZERO FA</div>
+            <div className="text-[10px] text-slate-400">Dual-Spectrum Cross-Check</div>
           </div>
         </div>
       </div>

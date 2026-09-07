@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { 
   Crosshair, Radio, Shield, Zap, AlertTriangle, Eye, 
   Compass, Volume2, VolumeX, RotateCcw, CheckCircle2, Navigation,
-  Activity, Play, Video
+  Activity, Play, Video, Flame
 } from "lucide-react";
 import { tacticalAudio } from "@/lib/tacticalAudio";
 
@@ -363,46 +363,66 @@ export function ClickToInfiltrateSandbox() {
         )}
       </div>
 
-      {/* Bottom Live Mission Telemetry Readout Grid */}
-      <div className="bg-[#070c12] p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
-        <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-          <div className="text-[10px] text-slate-400 mb-1">SYSTEM OPERATIONAL STATUS</div>
-          <div className="flex items-center gap-2">
-            <span className={`w-2 h-2 rounded-full ${simulationState === "IDLE" ? "bg-emerald-400" : "bg-red-400 animate-ping"}`} />
-            <span className="font-bold text-white text-sm">
-              {simulationState === "IDLE" ? "MONITORING 5KM SECTOR" : simulationState}
-            </span>
+      {/* Bottom Live Mission Telemetry Readout Grid (Visual Meters) */}
+      <div className="bg-[#070c12] p-4 grid grid-cols-2 lg:grid-cols-4 gap-3 text-xs font-mono">
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center shrink-0">
+            <Shield className="w-5 h-5 text-emerald-400" />
           </div>
-          <div className="text-[10px] text-slate-500 mt-1">100 Nodes Active • Geophone Mesh Ready</div>
-        </div>
-
-        <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-          <div className="text-[10px] text-slate-400 mb-1">SECTOR TDOA TRIANGULATION</div>
-          <div className="text-sm font-bold text-emerald-400">
-            {simulationState === "IDLE" ? "STANDBY" : `CONFIDENCE: ${tdoaConfidence}%`}
-          </div>
-          <div className="text-[10px] text-slate-400 mt-1">
-            {simulationState === "IDLE" ? "Hyperbolic solver idle" : `Radial Error: <${localizationRadius}m (MoD Spec <10m)`}
+          <div>
+            <div className="text-[10px] text-slate-400">SECTOR STATUS</div>
+            <div className="font-bold text-white text-sm">
+              {simulationState === "IDLE" ? "5KM ALL SECURE" : simulationState}
+            </div>
+            <div className="text-[10px] text-emerald-400">100 Nodes Active</div>
           </div>
         </div>
 
-        <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-          <div className="text-[10px] text-slate-400 mb-1">AUTONOMOUS QUICK REACTION VTOL</div>
-          <div className="text-sm font-bold text-cyan-300">
-            {activeDock ? activeDock.name : "DOCK CHARLIE"}
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center shrink-0">
+            <Crosshair className="w-5 h-5 text-cyan-400" />
           </div>
-          <div className="text-[10px] text-slate-400 mt-1">
-            Hatch open: 2.8s • Flight Progress: {droneFlightPct}%
+          <div>
+            <div className="text-[10px] text-slate-400">TDOA ACCURACY</div>
+            <div className="font-bold text-cyan-300 text-sm">
+              {simulationState === "IDLE" ? "STANDBY" : `< ${localizationRadius}m RADIAL`}
+            </div>
+            <div className="text-[10px] text-slate-400">
+              {simulationState === "IDLE" ? "Triangulator idle" : `${tdoaConfidence}% Confidence`}
+            </div>
           </div>
         </div>
 
-        <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-          <div className="text-[10px] text-slate-400 mb-1">FLIR BOSON 640 THERMAL LOCK</div>
-          <div className="text-sm font-bold text-amber-400">
-            {simulationState === "INTERCEPTED" ? "LOCK ACQUIRED (37.0°C)" : "STANDBY IN DOCK"}
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-500/30 flex items-center justify-center shrink-0">
+            <Navigation className="w-5 h-5 text-amber-400" />
           </div>
-          <div className="text-[10px] text-slate-400 mt-1">
-            {simulationState === "INTERCEPTED" ? "Video link: AES-256 live" : "Gimbal calibrated 0.0°"}
+          <div className="w-full">
+            <div className="flex justify-between text-[10px] text-slate-400">
+              <span>{activeDock ? activeDock.name : "DOCK CHARLIE"}</span>
+              <span className="text-amber-400 font-bold">{droneFlightPct}%</span>
+            </div>
+            <div className="w-full h-1.5 bg-slate-800 rounded-full mt-1.5 overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-amber-500 to-emerald-400 rounded-full transition-all duration-150"
+                style={{ width: `${droneFlightPct}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-500/30 flex items-center justify-center shrink-0">
+            <Flame className="w-5 h-5 text-purple-400" />
+          </div>
+          <div>
+            <div className="text-[10px] text-slate-400">FLIR THERMAL CORE</div>
+            <div className="font-bold text-purple-300 text-sm">
+              {simulationState === "INTERCEPTED" ? "LOCK ACQUIRED" : "STANDBY"}
+            </div>
+            <div className="text-[10px] text-slate-400">
+              {simulationState === "INTERCEPTED" ? "37.0°C Heat Bloom" : "Dock Calibrated"}
+            </div>
           </div>
         </div>
       </div>
